@@ -1,0 +1,67 @@
+<!-- SAMPLE BEFORE -->
+<table class="inner" align="center" width="570" cellpadding="0" cellspacing="0" role="presentation"
+    style="border-collapse: collapse; box-sizing: border-box; background-color: #ffffff;
+    margin: 0 auto; padding: 0; width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px;">
+    <tr>
+        <td>Nama</td>
+        <td>Umur</td>
+    </tr>
+    <tr>
+        <td>Dita Leni Ravia</td>
+        <td>24</td>
+    </tr>
+</table>
+
+<!-- SAMPLE AFTER -->
+<table class="inner" aria-describedby="mydesc"
+    style="border-collapse: collapse; box-sizing: border-box; background-color: #ffffff;
+    margin: 0 auto; padding: 0; width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px;">
+    <tr>
+        <th>Nama</th>
+        <th>Umur</th>
+    </tr>
+    <tr>
+        <td>Dita Leni Ravia</td>
+        <td>24</td>
+    </tr>
+</table>
+
+<!-- SAMPLE AFTER MENGGUNAKAN ROLE -->
+<table class="inner" aria-describedby="mydesc"
+    style="border-collapse: collapse; box-sizing: border-box; background-color: #ffffff;
+    margin: 0 auto; padding: 0; width: 570px; -premailer-cellpadding: 0; -premailer-cellspacing: 0; -premailer-width: 570px;">
+    <tr>
+        <th>Nama</th>
+        <th>Umur</th>
+    </tr>
+    <tr>
+        <td>Dita Leni Ravia</td>
+        <td>24</td>
+    </tr>
+</table>
+
+<!--
+    
+    HASIL :
+
+    (i) Remove this deprecated "align" attribute. Remove this deprecated "cellpadding" attribute. Remove this deprecated "cellpadding" attribute. & Remove this deprecated "width" attribute.
+    (s) attribut align,cellpadding,cellspacing, width pada table di html5 sudah usang/ditinggalkan (deprecated)
+    
+    (i) Replace this layout table with a CSS layout.
+    (s) penggunaan table tidak diperbolehkan untuk tujuan membuat layout itu maka maka table yg didalamnya mengandung attribute "role"  wajib dihapus, atau kalau "role" harus ada
+        table bisa dikonversi ke css
+    
+    (i) "message": "Add a description to this table."
+    (s) untuk mempermudah screen reader dalam membaca layout didalamnya, pada table wajib ditambahkan aria-describedby/caption/summary
+
+    (i) Add "<th>" headers to this "<table>".
+    (s) table wajib memiliki header, maka ganti <td>..</td> dengan <th>....</th> untuk menyatakan table header
+    
+    ------
+    Pada intinya tujuannya adalah menciptakan clean code yang menuju pada semantic html (terstruktur, rapih & mudah dibaca oleh user/screen reader
+    pada setiap tag/elemen/komponen yang dibuat.
+
+    Strategies, standards, and supporting resources to help you make the Web more accessible to people with disabilities
+
+    legend : (i) issue (s) solution
+-->
