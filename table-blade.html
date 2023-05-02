@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="id" xml:lang="id">
+
+<head>
+    <title>{{ $_mf['setting']['get']('title') ?? 'So Klin Korean Series' }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;
+    charset=UTF-8">
+</head>
+<style>
+    body {
+        height:100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-size: 13px;
+        font-family: -apple-system, BlinkMacSystemFont,
+            'Segoe UI', Roboto, Helvetica, Arial, sans-serif,
+            'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+        box-sizing: border-box;
+        background-color: #f7f7f7;
+        color: #74787e;
+        hyphens: auto;
+        line-height: 1.4;
+        margin: 0;
+        -moz-hyphens: auto;
+        -ms-word-break: break-all;
+        width: 100% !important;
+        -webkit-hyphens: auto;
+        -webkit-text-size-adjust: none;
+        word-break: break-word;
+    }
+    .outer-wrapper {
+        width: 550px;
+        background-color: white;
+        border-radius: 15px;
+        margin: 25px 0;
+        padding: 20px 50px;
+    }
+    .content-wrapper ul {
+        padding: 0;
+        display: flex;
+        margin:0;
+    }
+    .content-wrapper li {
+        list-style: none;
+        border-bottom: 1px solid #aaaaaa;
+        padding: 15px 0;
+        width: 100%;
+    }
+    .content-wrapper li:first-child {
+        font-weight: bold;
+        width: 30%;
+    }
+    .content-wrapper li img {
+        width: 70%;
+        border-radius:10px;
+        overflow: hidden;
+    }
+</style>
+<body>
+    <!-- code bagian header, atau include -->
+    @include ('frontend::email.header')
+    <section class="outer-wrapper" role="none">
+            <h1>So Klin Korean Series </h1>
+            <p>Kepada Yth. Bapak/Ibu Sudara {{ optional($user->microsite)->name }}, anda baru saja mempebarui data</p>
+            <p>Berikut data anda :</p>
+            <p>@if(!empty($user->microsite->url_ktp)) @endif @if(!empty($user->microsite->receipt_photo->file_name))
+                @endif</p>
+            <div class="content-wrapper">
+                <ul>
+                    <li>Kode Unik</li>
+                    <li>{{ $user->microsite
+                        ->receipt_photo
+                        ->transactionNumber
+                        ->transaction_number ?? '-' }}</li>
+                </ul>
+                <ul>
+                    <li>Name</li>
+                    <li>{{ optional($user->microsite)->name }}</li>
+                </ul>
+                <ul>
+                    <li>Email</li>
+                    <li>{{ optional($user->microsite)->email }}</li>
+                </ul>
+                <ul>
+                    <li>Phone</li>
+                    <li>{{ optional($user->microsite)->phone }}</li>
+                </ul>
+                <ul>
+                    <li>Address</li>
+                    <li>{{ optional($user->microsite)->address }}</li>
+                </ul>
+                <ul>
+                    <li>Nomor KTP</li>
+                    <li>{{ optional($user->microsite)->ktp_no }}</li>
+                </ul>
+                <ul>
+                    <li>Photo KTP</li>
+                    <li>
+                        <!-- @if(!empty($user->microsite->url_ktp))
+                        <img class="img-fluid mt-3" src="{{ $user->microsite->url_ktp['m']  }}" alt="Foto KTP">
+                        @endif -->
+                        <img class="img-fluid mt-3" src="https://glints.com/id/lowongan/wp-content/uploads/2021/10/watermark.png" alt="sample img">
+                    </li>
+                </ul>
+                <ul>
+                    <li>Photo Struck</li>
+                    <li>
+                        <!-- @if(!empty($user->microsite->receipt_photo->file_name))
+                        <img class="img-fluid mt-3" src="{{ $user->microsite->receipt_photo->url_struct['m'] }}"
+                            alt="Foto KTP">
+                        @endif -->
+                        <img class="img-fluid mt-3" src="https://media.suara.com/pictures/653x366/2020/05/29/47287-viral-struk-beraksara-jawa-twitterembahnyutz.jpg" alt="sample struk">
+                    </li>
+                </ul>
+
+            </div>
+            <p>Terima kasih atas partisipasi Anda</p>
+            <p>{{ $_mf['setting']['get']('title') ?? 'So Klin Korean Series' }}</p>
+    </section>
+    <!-- code bagian footer, atau include -->
+    @include ('frontend::email.footer')
+</body>
+
+</html>
